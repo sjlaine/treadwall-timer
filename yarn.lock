@@ -2097,6 +2097,10 @@ duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
 
+easytimer.js@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/easytimer.js/-/easytimer.js-2.2.1.tgz#030cb1e063fc10938c11f0078943c5ca9fced399"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -5525,7 +5529,7 @@ react-dev-utils@^5.0.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-dom@16.3.2:
+react-dom@^16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
@@ -5583,7 +5587,7 @@ react-scripts@1.1.4:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react@16.3.2:
+react@^16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
@@ -6509,6 +6513,10 @@ time-stamp@^2.0.0:
 timed-out@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
+
+timer.js@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/timer.js/-/timer.js-1.0.4.tgz#18d72dc5cccc40a4eb393694b2f48de2a2a02819"
 
 timers-browserify@^2.0.4:
   version "2.0.10"
