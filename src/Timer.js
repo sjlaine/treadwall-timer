@@ -8,34 +8,42 @@ export default class TreadTimer extends Component {
     this.state = {
       time: ''
     }
+
+    this.handleStart = this.handleStart.bind(this);
+    this.handlePause = this.handlePause.bind(this);
+    this.handleStop = this.handleStop.bind(this);
   }
 
   componentDidMount() {
 
-    // this.setState({timer: myTimer})
-    // myTimer.start();
-
-  }
-
-  render() {
     const myTimer = new Timer();
     myTimer.start();
     let current;
 
     myTimer.addEventListener('secondsUpdated', (evt) => {
-      current = myTimer.getTimeValues().toString();
+      this.setState({time: myTimer.getTimeValues().toString()});
+      // console.log(myTimer.getTimeValues().toString());
     });
 
-    console.log(myTimer.currentTime);
+    this.setState({timer: myTimer});
+  }
+
+  handleStart() {
+
+  }
+
+  render() {
+    // console.log(this.state.time);
 
     return (
       <div className="timer">
         <h1>
           {
-            myTimer.getTimeValues().toString()
+            this.state.timer &&
+            this.state.time
           }
         </h1>
-        <button>
+        <button onClick={this.handleStart}>
           Start
         </button>
         <button>
