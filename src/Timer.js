@@ -6,34 +6,43 @@ export default class TreadTimer extends Component {
     super();
 
     this.state = {
-      time: ''
+      time: '00:00:00'
     }
 
     this.handleStart = this.handleStart.bind(this);
     this.handlePause = this.handlePause.bind(this);
-    this.handleStop = this.handleStop.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
 
     const myTimer = new Timer();
-    myTimer.start();
-    let current;
 
     myTimer.addEventListener('secondsUpdated', (evt) => {
       this.setState({time: myTimer.getTimeValues().toString()});
-      // console.log(myTimer.getTimeValues().toString());
     });
 
     this.setState({timer: myTimer});
   }
 
   handleStart() {
+    this.state.timer.start();
+  }
 
+  handlePause() {
+    this.state.timer.pause();
+  }
+
+  handleReset() {
+    this.state.timer.reset();
+    this.setState({time: '00:00:00'})
+    this.state.timer.stop();
+    console.log(this.state.timer.getTimeValues());
+    // this.state.timer.stop();
   }
 
   render() {
-    // console.log(this.state.time);
+    console.log(this.state.timer);
 
     return (
       <div className="timer">
@@ -46,10 +55,10 @@ export default class TreadTimer extends Component {
         <button onClick={this.handleStart}>
           Start
         </button>
-        <button>
+        <button onClick={this.handlePause}>
           Pause
         </button>
-        <button>
+        <button onClick={this.handleReset}>
           Reset
         </button>
       </div>
