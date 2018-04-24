@@ -1,35 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: black;
   height: 40px;
   padding: 20px;
-  color: white;
+  color: #33BEFF;
+  display: flex;
+  margin: 10px;
+  font-size: 45px;
+  justify-content: center;
+}
+
+.App-logo {
+  height: 40px;
+  position: fixed;
+  left: 0;
+  margin-left: 50px;
 }
 
 .App-title {
   font-size: 1.5em;
+  align-self: center;
 }
 
 .App-intro {
   font-size: large;
 }
 
+.timer {
+  margin: 50px;
+}
+
+.timer * {
+  margin: 20px;
+}
+
+.timer h1 {
+  font-size: 80px;
+}
+
 button {
-  height: 50px;
-  width: 50px;
-  font-size: 15px;
+  height: 60px;
+  width: 100px;
+  font-size: 25px;
   font-weight: bold;
-  background-color: pink;
   border-radius: 10px;
-  margin: 10px;
+}
+
+.start-btn {
+  background-color: #5AFF7F;
+}
+
+.pause-btn {
+  background-color: #FF5733;
+}
+
+.reset-btn {
+  background-color: #33BEFF;
+}
+
+.footer {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 @keyframes App-logo-spin {
