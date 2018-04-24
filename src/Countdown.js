@@ -7,10 +7,11 @@ export default class Countdown extends Component {
   constructor() {
     super();
 
-    this.state = {
-      time: '00:00:03'
-    }
+    this.state = {value: ''}
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.parseTime = this.parseTime.bind(this);
     this.handleStart = this.handleStart.bind(this);
     this.handlePause = this.handlePause.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -27,8 +28,28 @@ export default class Countdown extends Component {
     this.setState({timer: myTimer});
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+    console.log(this.state.value);
+  }
+
+  handleInput() {
+    this.setState({time: null})
+  }
+
+  parseTime() {
+    const timeArr = this.state.value.split(':');
+    const hours = timeArr[timeArr.length - 3] || '00';
+    const minutes = timeArr[timeArr.length - 2] || '00';
+    const seconds = timeArr[timeArr.length - 1] || '00';
+    const parsed = {hours: +hours, minutes: +minutes, seconds: +seconds};
+    console.log(parsed);
+    return parsed;
+  }
+
   handleStart() {
-    this.state.timer.start({countdown: true, startValues: {seconds: 3}});
+    const startTime = this.parseTime();
+    this.state.timer.start({countdown: true, startValues: startTime});
   }
 
   handlePause() {
@@ -43,16 +64,25 @@ export default class Countdown extends Component {
   }
 
   render() {
-    console.log(this.state.timer);
 
     return (
       <div className="timer">
         <h2>Countdown</h2>
-        <h1>
           {
-            this.state.time
+            this.state.time ?
+            (<h1> {this.state.time} </h1>) :
+            (<div className="time-form">
+              <div className="input-time">
+                <label>hours:minutes:seconds</label>
+                <input
+                  placeholder="00:00:00"
+                  onChange={this.handleChange}
+                  value={this.state.value}
+                >
+                </input>
+              </div>
+            </div>)
           }
-        </h1>
         <button
           className="start-btn"
           onClick={this.handleStart}
@@ -71,7 +101,17 @@ export default class Countdown extends Component {
         >
           Reset
         </button>
-
+        {
+          this.state.time ?
+          (
+            <button
+              className="change-btn"
+              onClick={this.handleInput}
+            >
+              Change
+            </button>
+          ) : null
+        }
         {
           this.state.time === '00:00:00' ?
           <Sound
