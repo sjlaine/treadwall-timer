@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Timer from 'easytimer.js';
+import Sound from 'react-sound';
+import beep from './beep-09.mp3'
 
-export default class TreadTimer extends Component {
+export default class Countdown extends Component {
   constructor() {
     super();
 
     this.state = {
-      time: '00:00:00'
+      time: '00:00:03'
     }
 
     this.handleStart = this.handleStart.bind(this);
@@ -26,7 +28,7 @@ export default class TreadTimer extends Component {
   }
 
   handleStart() {
-    this.state.timer.start();
+    this.state.timer.start({countdown: true, startValues: {seconds: 3}});
   }
 
   handlePause() {
@@ -35,15 +37,17 @@ export default class TreadTimer extends Component {
 
   handleReset() {
     this.state.timer.reset();
-    this.setState({time: '00:00:00'})
+    this.setState({time: '00:00:03'})
     this.state.timer.stop();
+    this.setState({finished: true})
   }
 
   render() {
+    console.log(this.state.timer);
 
     return (
       <div className="timer">
-        <h2>Timer</h2>
+        <h2>Countdown</h2>
         <h1>
           {
             this.state.time
@@ -67,6 +71,17 @@ export default class TreadTimer extends Component {
         >
           Reset
         </button>
+
+        {
+          this.state.time === '00:00:00' ?
+          <Sound
+            url={beep}
+            playStatus={Sound.status.PLAYING}
+            onLoading={this.handleSongLoading}
+            onPlaying={this.handleSongPlaying}
+            onFinishedPlaying={this.handleSongFinishedPlaying}
+          /> : null
+        }
       </div>
     );
   }

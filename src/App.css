@@ -12,7 +12,6 @@
   padding: 20px;
   color: #33BEFF;
   display: flex;
-  margin: 10px;
   font-size: 45px;
   justify-content: center;
 }
@@ -31,6 +30,12 @@
 
 .App-intro {
   font-size: large;
+}
+
+.timers {
+  display: flex;
+  justify-content: center;
+  margin-top: 15vh;
 }
 
 .timer {
