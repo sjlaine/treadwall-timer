@@ -71,6 +71,10 @@ button {
   background-color: #33BEFF;
 }
 
+.change-btn {
+  background-color: lightgray;
+}
+
 .time-form {
   display: flex;
   justify-content: center;
