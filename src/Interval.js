@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewTimer from './NewTimer';
 
 export default class Interval extends Component {
   constructor() {
@@ -43,7 +44,7 @@ export default class Interval extends Component {
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
     const interval = {time, repeats: this.state.repeats};
-    this.setState({time: '', repeats: null});
+    this.setState({time: '', repeats: ''});
     this.setState({timer: [...this.state.timer, interval]});
 
     console.log(this.state);
@@ -84,21 +85,7 @@ export default class Interval extends Component {
           </button>
         </form>
         <div className="form-right">
-          <h2>
-            {
-              this.state.timer[0] &&
-              this.state.timer.map(obj => {
-                return (
-                  <div>
-                    <h3>Duration: </h3>
-                    <h3>{obj.time}</h3>
-                    <h3>Repeats: </h3>
-                    <h3>{obj.repeats}</h3>
-                  </div>
-                )
-              })
-            }
-          </h2>
+          <NewTimer timer={this.state.timer} />
         </div>
       </div>
     );
