@@ -31,7 +31,6 @@ export default class Countdown extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    console.log(this.state.value);
   }
 
   handleInput() {
@@ -40,20 +39,25 @@ export default class Countdown extends Component {
 
   parseTime() {
     const timeArr = this.state.value.split(':');
-    const hours = timeArr[timeArr.length - 3] || '00';
-    const minutes = timeArr[timeArr.length - 2] || '00';
-    const seconds = timeArr[timeArr.length - 1] || '00';
+    let hours = timeArr[timeArr.length - 3] || '00';
+    let minutes = timeArr[timeArr.length - 2] || '00';
+    let seconds = timeArr[timeArr.length - 1] || '00';
     const parsed = {hours: +hours, minutes: +minutes, seconds: +seconds};
-    console.log(parsed);
+
     return parsed;
   }
 
   handleSubmit() {
-    const timeArr = this.state.value.split(':');
+    let timeArr = this.state.value.split(':');
+    timeArr = timeArr.map(el => {
+      if (el.length === 1) el = '0' + el;
+      return el;
+    })
+    console.log(timeArr);
     let time;
-    if (timeArr.length === 1) time = '00:00:' + this.state.value;
-    if (timeArr.length === 2) time = '00:' + this.state.value;
-    if (timeArr.length === 3) time = this.state.value;
+    if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
+    if (timeArr.length === 2) time = '00:' + timeArr.join(':');
+    if (timeArr.length === 3) time = timeArr.join(':');
     this.setState({time})
   }
 
