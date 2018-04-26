@@ -5,8 +5,13 @@ export default class Form extends Component {
     return (
       <div>
         <h1>
-          This will be a custom timer form.
+          Create a Custom Timer
         </h1>
+        <h3>Route Color:</h3>
+        <button className="red-btn">Red</button>
+        <button className="yellow-btn">Yellow</button>
+        <button className="green-btn">Green</button>
+        <button className="blue-btn">Blue</button>
       </div>
     )
   }
