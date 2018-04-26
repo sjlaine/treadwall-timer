@@ -1,40 +1,22 @@
 import React, { Component } from 'react';
-import Timer from 'easytimer.js';
-import Sound from 'react-sound';
-import beep from './beep-09.mp3'
 
 export default class Interval extends Component {
   constructor() {
     super();
 
-    this.state = {value: ''}
+    this.state = {
+      value: '',
+      timer: []
+    }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleInput = this.handleInput.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleStart = this.handleStart.bind(this);
-    this.handlePause = this.handlePause.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-  }
-
-  componentDidMount() {
-
-    const myTimer = new Timer();
-
-    myTimer.addEventListener('secondsUpdated', (evt) => {
-      this.setState({time: myTimer.getTimeValues().toString()});
-    });
-
-    this.setState({timer: myTimer});
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleInput() {
-    this.setState({time: null})
+    console.log(event.target.value);
+    this.setState({[event.target.name]: event.target.value});
   }
 
   parseTime() {
@@ -47,7 +29,9 @@ export default class Interval extends Component {
     return parsed;
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
+
     let timeArr = this.state.value.split(':');
     timeArr = timeArr.map(el => {
       if (el.length === 1) el = '0' + el;
@@ -58,98 +42,66 @@ export default class Interval extends Component {
     if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
-    this.setState({time})
-  }
+    const interval = {time, repeats: this.state.repeats};
+    this.setState({time: '', repeats: null});
+    this.setState({timer: [...this.state.timer, interval]});
 
-  handleStart() {
-    const startTime = this.parseTime();
-    this.state.timer.start({countdown: true, startValues: startTime});
-  }
-
-  handlePause() {
-    this.state.timer.pause();
-  }
-
-  handleReset() {
-    this.state.timer.reset();
-    this.handleSubmit();
-    this.state.timer.stop();
-    this.setState({finished: true})
+    console.log(this.state);
   }
 
   render() {
 
     return (
       <div className="timer">
-        <div className="form">
-        {
-          this.state.time ?
-          (<h1> {this.state.time} </h1>) :
-          (<div className="time-form">
+        <form className="form" onSubmit={this.handleSubmit}>
+          <div className="time-form">
             <div className="input-time">
-              <label>Duration (hours:minutes:seconds)</label>
+              <label>
+                Duration:
+                <br />
+                (hours:minutes:seconds)
+              </label>
               <input
                 placeholder="00:00:00"
                 onChange={this.handleChange}
-                value={this.state.value}
+                value={this.state.duration}
+                name="duration"
+                required
+              >
+              </input>
+              <label>Repeats:</label>
+              <input
+                placeholder="repeats"
+                onChange={this.handleChange}
+                value={this.state.repeats}
+                name="repeats"
+                required
               >
               </input>
             </div>
-          </div>)
-        }
-        {
-          this.state.time ?
-          (
-            <button
-              className="change-btn"
-              onClick={this.handleInput}
-            >
-              Change
-            </button>
-          ) :
-          (
-            <button
-              className="submit-btn"
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </button>
-          )
-        }
-        </div>
-        {
-          this.state.time ?
-          (<div>
-           <button
-            className="start-btn"
-            onClick={this.handleStart}
-          >
-            Start
-          </button>
+          </div>
           <button
-            className="pause-btn"
-            onClick={this.handlePause}
+            className="submit-btn"
+            type="submit"
           >
-            Pause
+            Submit
           </button>
-          <button
-            className="reset-btn"
-            onClick={this.handleReset}
-          >
-            Reset
-          </button>
-          </div>) : null
-        }
-        {
-          this.state.time === '00:00:00' ?
-          <Sound
-            url={beep}
-            playStatus={Sound.status.PLAYING}
-            onLoading={this.handleSongLoading}
-            onPlaying={this.handleSongPlaying}
-            onFinishedPlaying={this.handleSongFinishedPlaying}
-          /> : null
-        }
+        </form>
+        <h2>
+          {
+            this.state.timer[0] &&
+            this.state.timer.map(obj => {
+              return (
+                <div>
+                  <h3>Duration: </h3>
+                  <h3>{obj.time}</h3>
+                  <h3>Repeats: </h3>
+                  <h3>{obj.repeats}</h3>
+                </div>
+              )
+            })
+          }
+        </h2>
       </div>
     );
   }

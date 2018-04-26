@@ -7,7 +7,6 @@ import Timer from './Timer';
 import Countdown from './Countdown';
 import Custom from './Form';
 import Footer from './Footer';
-import logo from './logo.png';
 
 document.body.style.overflow = "hidden" //Where to put this??
 

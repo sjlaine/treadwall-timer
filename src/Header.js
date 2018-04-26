@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       <header className="App-header">
-        <img className="App-logo" src={logo} />
+        <img className="App-logo" src={logo} alt="GPLogo" />
         <h1 className="App-title">Treadwall Timer</h1>
         <div className="subtitles">
           <Link to="/stopwatch">
