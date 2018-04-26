@@ -111,15 +111,13 @@ button:hover {
   display: flex;
 }
 
-.form label {
-  margin-left: -10px;
+.form-left {
+  display: flex-column;
+  margin: 30px;
 }
 
-.time-form {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  margin-top: 20px;
+.form-right {
+  align-self: right;
 }
 
 .input-time {
@@ -135,6 +133,7 @@ button:hover {
   border-radius: 10px;
   text-align: center;
   font-size: 28px;
+  align-self: center;
 }
 
 .red-btn {

@@ -5,9 +5,11 @@ import Interval from './Interval';
 export default class Form extends Component {
   render() {
     return (
-      <div>
-        <RouteColor />
-        <Interval />
+      <div className="form">
+        <div className="form-left">
+          <RouteColor />
+          <Interval />
+        </div>
       </div>
     )
   }

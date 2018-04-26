@@ -50,35 +50,31 @@ export default class Interval extends Component {
   }
 
   render() {
-
     return (
-      <div className="timer">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <div className="time-form">
-            <div className="input-time">
-              <label>
-                Duration:
-                <br />
-                (hours:minutes:seconds)
-              </label>
-              <input
-                placeholder="00:00:00"
-                onChange={this.handleChange}
-                value={this.state.duration}
-                name="duration"
-                required
-              >
-              </input>
-              <label>Repeats:</label>
-              <input
-                placeholder="repeats"
-                onChange={this.handleChange}
-                value={this.state.repeats}
-                name="repeats"
-                required
-              >
-              </input>
-            </div>
+      <div className="interval">
+        <form onSubmit={this.handleSubmit}>
+          <div className="input-time">
+            <label>
+              Duration
+              (hours:minutes:seconds):
+            </label>
+            <input
+              placeholder="00:00:00"
+              onChange={this.handleChange}
+              value={this.state.duration}
+              name="duration"
+              required
+            >
+            </input>
+            <label>Repeats:</label>
+            <input
+              placeholder="repeats"
+              onChange={this.handleChange}
+              value={this.state.repeats}
+              name="repeats"
+              required
+            >
+            </input>
           </div>
           <button
             className="submit-btn"
@@ -87,21 +83,23 @@ export default class Interval extends Component {
             Submit
           </button>
         </form>
-        <h2>
-          {
-            this.state.timer[0] &&
-            this.state.timer.map(obj => {
-              return (
-                <div>
-                  <h3>Duration: </h3>
-                  <h3>{obj.time}</h3>
-                  <h3>Repeats: </h3>
-                  <h3>{obj.repeats}</h3>
-                </div>
-              )
-            })
-          }
-        </h2>
+        <div className="form-right">
+          <h2>
+            {
+              this.state.timer[0] &&
+              this.state.timer.map(obj => {
+                return (
+                  <div>
+                    <h3>Duration: </h3>
+                    <h3>{obj.time}</h3>
+                    <h3>Repeats: </h3>
+                    <h3>{obj.repeats}</h3>
+                  </div>
+                )
+              })
+            }
+          </h2>
+        </div>
       </div>
     );
   }
