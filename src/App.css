@@ -137,6 +137,26 @@ button:hover {
   font-size: 28px;
 }
 
+.red-btn {
+  background-color: red;
+}
+
+.yellow-btn {
+  background-color: yellow;
+}
+
+.green-btn {
+  background-color: #22ff00;
+}
+
+.blue-btn {
+  background-color: #006bff;
+}
+
+.active {
+  border: 2px solid black;
+}
+
 .footer {
   margin-top: 40vh;
   display: flex;
