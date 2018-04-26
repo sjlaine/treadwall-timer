@@ -9,6 +9,8 @@ import Custom from './Form';
 import Footer from './Footer';
 import logo from './logo.png';
 
+document.body.style.overflow = "hidden" //Where to put this??
+
 export default class App extends Component {
   render() {
     return (
