@@ -16,7 +16,7 @@ export default class RouteColor extends Component {
 
   render() {
     return (
-      <div>
+      <div className="route-color">
         <h1>
           Create a Custom Timer
         </h1>

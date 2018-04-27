@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400');
 
 .App {
-  text-align: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
 }
@@ -100,48 +99,30 @@ button:hover {
   margin: 20px 0 0 30px;
 }
 
-.submit-btn {
-  background-color: lightgray;
-  align-self: center;
-  margin: 50px 0 0;
-  height: 50px;
-}
-
-.interval {
-  display: flex-column;
-  justify-content: flex-start;
-}
-
 .form {
-  display: flex;
-}
-
-.form-left {
-  display: flex-column;
   margin: 30px;
 }
 
-.input-time {
-  font-size: 20px;
-  display: flex-column;
+.interval {
+  margin: 20px 0 0 20px;
 }
 
-.input-time label {
-  align-self: left;
-}
-
-.input-time input {
+input {
   height: 50px;
-  width: 180px;
+  width: 150px;
   border-radius: 10px;
+  font-size: 30px;
   text-align: center;
-  font-size: 28px;
-  align-self: flex-start;
 }
 
-.add-interval {
-  display: flex;
-  justify-content: flex-start;
+.submit-btn {
+  background-color: lightgray;
+  align-self: center;
+  height: 50px;
+}
+
+.route-color h3 {
+  margin: 10px 0 0 20px;
 }
 
 .red-btn {

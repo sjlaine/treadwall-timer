@@ -14,6 +14,7 @@ export default class Interval extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRepeats = this.handleRepeats.bind(this);
   }
 
   handleChange(event) {
@@ -54,57 +55,57 @@ export default class Interval extends Component {
     console.log('this.state', this.state);
   }
 
+  handleRepeats(event) {
+    event.preventDefault();
+    console.log(this.state.repeats);
+  }
+
   render() {
     return (
       <div className="interval">
         <form onSubmit={this.handleSubmit}>
-          <div className="input-time">
-            <label>
-              Duration
-              (hours:minutes:seconds):
-            </label>
-            <div className="add-interval">
-              <input
-                type="text"
-                placeholder="00:00:00"
-                onChange={this.handleChange}
-                value={this.state.duration}
-                name="duration"
-                required
-              >
-              </input>
-              <button
-                className="add-btn"
-                type="submit"
-              >
-                Add
-            </button>
-          </div>
-          </div>
+          <label>
+            Duration
+            (hours:minutes:seconds):
+          </label>
+          <br />
+          <input
+            type="text"
+            placeholder="00:00:00"
+            onChange={this.handleChange}
+            value={this.state.duration}
+            name="duration"
+            required
+          >
+          </input>
+          <button
+            className="submit-btn"
+            type="submit"
+          >
+            Add
+          </button>
         </form>
         <NewTimer timer={this.state.timer} />
         <br />
-        <div className="input-time">
-            <label>
-              Duration
-              (hours:minutes:seconds):
-            </label>
-            <div className="add-interval">
-              <input
-                type="text"
-                placeholder="00:00:00"
-                onChange={this.handleChange}
-                value={this.state.duration}
-                name="duration"
-                required
-              >
-              </input>
-              <button
-                className="add-btn"
-                type="submit"
-              >
-                Add
-            </button>
+        <form onSubmit={this.handleRepeats}>
+          <label> Repeats: </label>
+          <br />
+          <input
+            type="text"
+            placeholder="0"
+            onChange={this.handleChange}
+            value={this.state.repeats}
+            name="repeats"
+            required
+          >
+          </input>
+          <button
+            className="submit-btn"
+            type="submit"
+          >
+            Add
+          </button>
+        </form>
       </div>
     );
   }
