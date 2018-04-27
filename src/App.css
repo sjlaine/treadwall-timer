@@ -107,6 +107,11 @@ button:hover {
   height: 50px;
 }
 
+.interval {
+  display: flex-column;
+  justify-content: flex-start;
+}
+
 .form {
   display: flex;
 }
@@ -118,9 +123,11 @@ button:hover {
 
 .input-time {
   font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
+  display: flex-column;
+}
+
+.input-time label {
+  align-self: left;
 }
 
 .input-time input {
@@ -129,7 +136,12 @@ button:hover {
   border-radius: 10px;
   text-align: center;
   font-size: 28px;
-  align-self: center;
+  align-self: flex-start;
+}
+
+.add-interval {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .red-btn {

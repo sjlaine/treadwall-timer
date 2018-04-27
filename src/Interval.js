@@ -82,19 +82,20 @@ export default class Interval extends Component {
           </div>
           </div>
         </form>
-        <div className="form-right">
-          <NewTimer timer={this.state.timer} />
-          <br />
-          <div className="input-time">
-            <div className="add">
-              <label>Repeats:</label>
-              <br />
+        <NewTimer timer={this.state.timer} />
+        <br />
+        <div className="input-time">
+            <label>
+              Duration
+              (hours:minutes:seconds):
+            </label>
+            <div className="add-interval">
               <input
                 type="text"
-                placeholder="repeats"
+                placeholder="00:00:00"
                 onChange={this.handleChange}
-                value={this.state.repeats}
-                name="repeats"
+                value={this.state.duration}
+                name="duration"
                 required
               >
               </input>
@@ -103,10 +104,7 @@ export default class Interval extends Component {
                 type="submit"
               >
                 Add
-              </button>
-            </div>
-          </div>
-        </div>
+            </button>
       </div>
     );
   }
