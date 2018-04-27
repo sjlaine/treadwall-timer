@@ -6,7 +6,8 @@ export default class Interval extends Component {
     super();
 
     this.state = {
-      value: '',
+      duration: '',
+      repeats: '',
       timer: []
     }
 
@@ -16,7 +17,6 @@ export default class Interval extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({[event.target.name]: event.target.value});
   }
 
@@ -33,21 +33,25 @@ export default class Interval extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    let timeArr = this.state.value.split(':');
+    const color = document.getElementsByClassName('selectedColor').length ?
+    document.getElementsByClassName('selectedColor')[0].innerText : 'N/A';
+
+    let timeArr = this.state.duration.split(':');
     timeArr = timeArr.map(el => {
       if (el.length === 1) el = '0' + el;
       return el;
     })
-    console.log(timeArr);
+
     let time;
     if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
-    const interval = {time, repeats: this.state.repeats};
-    this.setState({time: '', repeats: ''});
+    const interval = {time, color};
+    console.log({interval});
+    this.setState({duration: ''});
     this.setState({timer: [...this.state.timer, interval]});
 
-    console.log(this.state);
+    console.log('this.state', this.state);
   }
 
   render() {
@@ -59,33 +63,49 @@ export default class Interval extends Component {
               Duration
               (hours:minutes:seconds):
             </label>
-            <input
-              placeholder="00:00:00"
-              onChange={this.handleChange}
-              value={this.state.duration}
-              name="duration"
-              required
-            >
-            </input>
-            <label>Repeats:</label>
-            <input
-              placeholder="repeats"
-              onChange={this.handleChange}
-              value={this.state.repeats}
-              name="repeats"
-              required
-            >
-            </input>
+            <div className="add-interval">
+              <input
+                type="text"
+                placeholder="00:00:00"
+                onChange={this.handleChange}
+                value={this.state.duration}
+                name="duration"
+                required
+              >
+              </input>
+              <button
+                className="add-btn"
+                type="submit"
+              >
+                Add
+            </button>
           </div>
-          <button
-            className="submit-btn"
-            type="submit"
-          >
-            Submit
-          </button>
+          </div>
         </form>
         <div className="form-right">
           <NewTimer timer={this.state.timer} />
+          <br />
+          <div className="input-time">
+            <div className="add">
+              <label>Repeats:</label>
+              <br />
+              <input
+                type="text"
+                placeholder="repeats"
+                onChange={this.handleChange}
+                value={this.state.repeats}
+                name="repeats"
+                required
+              >
+              </input>
+              <button
+                className="add-btn"
+                type="submit"
+              >
+                Add
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

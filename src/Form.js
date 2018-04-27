@@ -3,6 +3,7 @@ import RouteColor from './RouteColor';
 import Interval from './Interval';
 
 export default class Form extends Component {
+
   render() {
     return (
       <div className="form">

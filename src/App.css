@@ -116,10 +116,6 @@ button:hover {
   margin: 30px;
 }
 
-.form-right {
-  align-self: right;
-}
-
 .input-time {
   font-size: 20px;
   display: flex;
@@ -150,6 +146,10 @@ button:hover {
 
 .blue-btn {
   background-color: #006bff;
+}
+
+.rest-btn {
+  background-color: lightgray;
 }
 
 .selectedColor {

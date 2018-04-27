@@ -9,9 +9,7 @@ export default class RouteColor extends Component {
   }
 
   handleClick(event) {
-    console.log(event.target);
     const selectedEls = [...document.getElementsByClassName('selectedColor')];
-    console.log(selectedEls);
     selectedEls.forEach(el => el.classList.remove('selectedColor'));
     event.target.classList.add('selectedColor');
   }
@@ -47,6 +45,12 @@ export default class RouteColor extends Component {
             onClick={this.handleClick}
           >
             Blue
+          </button>
+          <button
+            className="rest-btn"
+            onClick={this.handleClick}
+          >
+            Rest
           </button>
         </div>
       </div>

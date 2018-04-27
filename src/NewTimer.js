@@ -9,10 +9,11 @@ const NewTimer = (props) => {
         props.timer.map((obj, idx) => {
           return (
             <div key={idx}>
-              <h3>Duration: </h3>
-              <h3>{obj.time}</h3>
-              <h3>Repeats: </h3>
-              <h3>{obj.repeats}</h3>
+              <h3>
+                Interval: {obj.color}
+                <br />
+                Duration: {obj.time}
+              </h3>
             </div>
           )
         })
