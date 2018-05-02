@@ -3,8 +3,8 @@ import IntervalChunk from './IntervalChunk';
 import NewTimer from './NewTimer';
 
 export default class Interval extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       duration: '',
@@ -15,7 +15,6 @@ export default class Interval extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleRepeats = this.handleRepeats.bind(this);
   }
 
   handleChange(event) {
@@ -49,16 +48,14 @@ export default class Interval extends Component {
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
     const interval = {time, color};
-    console.log({interval});
+
     this.setState({duration: ''});
     this.setState({timer: [...this.state.timer, interval]});
   }
 
-  handleRepeats(event) {
-    event.preventDefault();
-  }
-
   render() {
+    const repeats = this.state.repeats;
+
     return (
       <div>
         <div className="form-left">
@@ -86,7 +83,7 @@ export default class Interval extends Component {
           </form>
           <IntervalChunk timer={this.state.timer} />
           <br />
-          <form onSubmit={this.handleRepeats}>
+          <form onSubmit={(e) => this.props.handleRepeats(e, repeats)}>
             <label> Repeats: </label>
             <br />
             <input

@@ -1,10 +1,9 @@
 import React from 'react';
 
 const NewTimer = (props) => {
-  console.log(props);
   return (
     <div>
-      <h2>New Timer Here</h2>
+      <h2>{props.repeats}</h2>
     </div>
   );
 }

@@ -114,6 +114,7 @@ button:hover {
 .form-right {
   grid-column-start: 2;
   grid-column-end: span 1;
+  border-left: 1px solid black;
 }
 
 .interval {
