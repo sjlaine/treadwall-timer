@@ -13,7 +13,7 @@ const Header = () => {
             <h2 className="App-subtitle">Stopwatch</h2>
           </Link>
           <Link to="/timers">
-            <h2 className="App-subtitle">Timers</h2>
+            <h2 className="App-subtitle">Countdown</h2>
           </Link>
           <Link to="/custom">
             <h2 className="App-subtitle">Custom</h2>

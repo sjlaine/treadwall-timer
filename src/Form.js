@@ -8,13 +8,13 @@ export default class Form extends Component {
   render() {
     return (
       <div className="form">
-        <div className="form-left">
-          <RouteColor />
-          <Interval />
-        </div>
-        <div className="form-right">
-          <NewTimer />
-        </div>
+          <div className="form-left">
+            <RouteColor />
+            <Interval />
+          </div>
+          <div className="form-right">
+            <NewTimer />
+          </div>
       </div>
     )
   }

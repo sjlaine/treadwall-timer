@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IntervalChunk from './IntervalChunk';
+import NewTimer from './NewTimer';
 
 export default class Interval extends Component {
   constructor() {
@@ -59,50 +60,52 @@ export default class Interval extends Component {
 
   render() {
     return (
-      <div className="interval">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Duration
-            (hours:minutes:seconds):
-          </label>
+      <div>
+        <div className="form-left">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Duration
+              (hours:minutes:seconds):
+            </label>
+            <br />
+            <input
+              type="text"
+              placeholder="00:00:00"
+              onChange={this.handleChange}
+              value={this.state.duration}
+              name="duration"
+              required
+            >
+            </input>
+            <button
+              className="submit-btn"
+              type="submit"
+            >
+              Add
+            </button>
+          </form>
+          <IntervalChunk timer={this.state.timer} />
           <br />
-          <input
-            type="text"
-            placeholder="00:00:00"
-            onChange={this.handleChange}
-            value={this.state.duration}
-            name="duration"
-            required
-          >
-          </input>
-          <button
-            className="submit-btn"
-            type="submit"
-          >
-            Add
-          </button>
-        </form>
-        <IntervalChunk timer={this.state.timer} />
-        <br />
-        <form onSubmit={this.handleRepeats}>
-          <label> Repeats: </label>
-          <br />
-          <input
-            type="text"
-            placeholder="0"
-            onChange={this.handleChange}
-            value={this.state.repeats}
-            name="repeats"
-            required
-          >
-          </input>
-          <button
-            className="submit-btn"
-            type="submit"
-          >
-            Add
-          </button>
-        </form>
+          <form onSubmit={this.handleRepeats}>
+            <label> Repeats: </label>
+            <br />
+            <input
+              type="text"
+              placeholder="0"
+              onChange={this.handleChange}
+              value={this.state.repeats}
+              name="repeats"
+              required
+            >
+            </input>
+            <button
+              className="submit-btn"
+              type="submit"
+            >
+              Add
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
