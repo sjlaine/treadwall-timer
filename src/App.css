@@ -101,6 +101,19 @@ button:hover {
 
 .form {
   margin: 30px;
+  display: grid;
+  grid-template-columns: 50% auto;
+}
+
+.form-left {
+  grid-column-start: 1;
+  grid-column-end: span 1;
+}
+
+.form-right {
+  grid-column-start: 2;
+  grid-column-end: span 1;
+  border-left: 1px solid black;
 }
 
 .interval {

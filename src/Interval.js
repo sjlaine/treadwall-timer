@@ -51,13 +51,10 @@ export default class Interval extends Component {
     console.log({interval});
     this.setState({duration: ''});
     this.setState({timer: [...this.state.timer, interval]});
-
-    console.log('this.state', this.state);
   }
 
   handleRepeats(event) {
     event.preventDefault();
-    console.log(this.state.repeats);
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RouteColor from './RouteColor';
 import Interval from './Interval';
+import NewTimer from './NewTimer';
 
 export default class Form extends Component {
 
@@ -10,6 +11,9 @@ export default class Form extends Component {
         <div className="form-left">
           <RouteColor />
           <Interval />
+        </div>
+        <div className="form-right">
+          <NewTimer />
         </div>
       </div>
     )
