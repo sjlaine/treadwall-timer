@@ -1,21 +1,46 @@
 import React, { Component } from 'react';
 import RouteColor from './RouteColor';
 import Interval from './Interval';
+import IntervalChunk from './IntervalChunk';
 import NewTimer from './NewTimer';
 
 export default class Form extends Component {
   constructor() {
     super();
     this.state = {
-      repeats: null
+      repeats: null,
+      timer: []
     };
 
     this.handleRepeats = this.handleRepeats.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleRepeats(event, repeats) {
     event.preventDefault();
     this.setState({repeats});
+  }
+
+  handleSubmit(event, duration) {
+    event.preventDefault();
+
+    const color = document.getElementsByClassName('selectedColor').length ?
+    document.getElementsByClassName('selectedColor')[0].innerText : 'N/A';
+
+    let timeArr = duration.split(':');
+    timeArr = timeArr.map(el => {
+      if (el.length === 1) el = '0' + el;
+      return el;
+    })
+
+    let time;
+    if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
+    if (timeArr.length === 2) time = '00:' + timeArr.join(':');
+    if (timeArr.length === 3) time = timeArr.join(':');
+    const interval = {time, color};
+
+    this.setState({duration: ''});
+    this.setState({timer: [...this.state.timer, interval]});
   }
 
   render() {
@@ -25,7 +50,9 @@ export default class Form extends Component {
           <RouteColor />
           <Interval
             handleRepeats={this.handleRepeats}
+            handleSubmit={this.handleSubmit}
           />
+          <IntervalChunk timer={this.state.timer} />
         </div>
         <div className="form-right">
           <NewTimer
