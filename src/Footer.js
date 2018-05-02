@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <h3>
-        {'This app was designed with <3 with the help of Create-React-App.'}
+        {'This app was designed with the help of Create-React-App.'}
       </h3>
     </div>
   )

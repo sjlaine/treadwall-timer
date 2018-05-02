@@ -150,10 +150,11 @@ input {
 }
 
 .footer {
-  margin-top: 40vh;
   display: flex;
   width: 100%;
   justify-content: center;
+  position: fixed;
+  bottom: 0;
   margin-bottom: 50px;
 }
 

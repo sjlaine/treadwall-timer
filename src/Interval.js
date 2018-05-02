@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NewTimer from './NewTimer';
+import IntervalChunk from './IntervalChunk';
 
 export default class Interval extends Component {
   constructor() {
@@ -85,7 +85,7 @@ export default class Interval extends Component {
             Add
           </button>
         </form>
-        <NewTimer timer={this.state.timer} />
+        <IntervalChunk timer={this.state.timer} />
         <br />
         <form onSubmit={this.handleRepeats}>
           <label> Repeats: </label>
