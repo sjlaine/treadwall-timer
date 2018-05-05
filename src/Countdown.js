@@ -78,11 +78,9 @@ export default class Countdown extends Component {
   }
 
   render() {
-
     return (
       <div className="timer">
         <h2>Countdown</h2>
-        <div className="form">
         {
           this.state.time ?
           (<h1> {this.state.time} </h1>) :
@@ -117,7 +115,6 @@ export default class Countdown extends Component {
             </button>
           )
         }
-        </div>
         {
           this.state.time ?
           (<div>

@@ -16,14 +16,12 @@ export default class App extends Component {
       <Router>
         <div className="App">
           <Header />
-          <div>
+          <div className="App-body">
             <Switch>
               <Route exact path="/timers" component={Countdown}/>
               <Route path="/stopwatch" component={Timer}/>
               <Route path="/custom" component={Custom}/>
             </Switch>
-          </div>
-          <div className="timers">
           </div>
           <Footer />
         </div>
