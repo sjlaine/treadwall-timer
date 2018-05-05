@@ -117,7 +117,7 @@ export default class Countdown extends Component {
         }
         {
           this.state.time ?
-          (<div>
+          (<div className="timer-btns">
            <button
             className="start-btn"
             onClick={this.handleStart}
