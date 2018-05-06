@@ -19,13 +19,16 @@ export default class Interval extends Component {
   render() {
     const repeats = this.state.repeats;
     const duration = this.state.duration;
-    // const color = document.getElementsByClassName('selectedColor').length ?
-    //   document.getElementsByClassName('selectedColor')[0].innerText : 'N/A'
 
     return (
       <div>
         <div className="form-left">
-          <form onSubmit={(e) => this.props.handleSubmit(e, duration)}>
+          <form
+            onSubmit={(e) => {
+              this.setState({duration: ''});
+              return this.props.handleSubmit(e, duration)
+              }}
+          >
             <label>
               Duration
               (hours:minutes:seconds):
@@ -49,9 +52,10 @@ export default class Interval extends Component {
           </form>
           <br />
           <form
-            onSubmit={(e) => (
-              this.props.handleRepeats(e, repeats)
-            )}
+            onSubmit={(e) => {
+              this.setState({repeats: ''})
+              return this.props.handleRepeats(e, repeats)
+            }}
           >
             <label> Repeats: </label>
             <br />

@@ -6,7 +6,14 @@ const NewTimer = (props) => {
 
   return (
     <div>
-      <h2>New Timer Here</h2>
+      {
+        timer.map((interval, idx) => (
+          <div key={idx}>
+            <h2>{interval.color}</h2>
+            <h2>{interval.time}</h2>
+          </div>
+        ))
+      }
     </div>
   );
 }

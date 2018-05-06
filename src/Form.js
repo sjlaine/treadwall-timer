@@ -26,7 +26,10 @@ export default class Form extends Component {
       newTimer.push(...intervalChunk);
       repeats--;
     }
+    this.setState({timer: []});
     this.setState({newTimer});
+
+    document.getElementsByClassName('selectedColor')[0].classList.remove('selectedColor');
   }
 
   handleSubmit(event, duration) {
@@ -47,7 +50,6 @@ export default class Form extends Component {
     if (timeArr.length === 3) time = timeArr.join(':');
     const interval = {time, color};
 
-    this.setState({duration: ''});
     this.setState({timer: [...this.state.timer, interval]});
   }
 
