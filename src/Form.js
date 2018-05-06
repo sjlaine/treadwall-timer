@@ -9,7 +9,8 @@ export default class Form extends Component {
     super();
     this.state = {
       repeats: null,
-      timer: []
+      timer: [],
+      newTimer: []
     };
 
     this.handleRepeats = this.handleRepeats.bind(this);
@@ -18,12 +19,14 @@ export default class Form extends Component {
 
   handleRepeats(event, repeats) {
     event.preventDefault();
-    const interval = {color: this.state.color, duration: this.state.duration};
+    const intervalChunk = this.state.timer;
+    let newTimer = [];
 
     while (repeats > 0) {
-      this.setState({timer: [...this.state.timer, interval]});
+      newTimer.push(...intervalChunk);
       repeats--;
     }
+    this.setState({newTimer});
   }
 
   handleSubmit(event, duration) {
@@ -61,7 +64,7 @@ export default class Form extends Component {
         </div>
         <div className="form-right">
           <NewTimer
-            timer={this.state.timer}
+            newTimer={this.state.newTimer}
           />
         </div>
       </div>

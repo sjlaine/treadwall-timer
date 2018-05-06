@@ -1,8 +1,8 @@
 import React from 'react';
 
 const NewTimer = (props) => {
-  let timer = props.timer;
-  console.log(timer);
+  const timer = props.newTimer;
+  console.log('newTimer', timer);
 
   return (
     <div>

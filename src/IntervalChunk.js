@@ -1,7 +1,6 @@
 import React from 'react';
 
 const IntervalChunk = (props) => {
-  console.log(props)
   return (
     <h2>
       {

@@ -6,9 +6,8 @@ import Header from './Header';
 import Timer from './Timer';
 import Countdown from './Countdown';
 import Custom from './Form';
-import Footer from './Footer';
 
-document.body.style.overflow = "hidden" //Where to put this??
+// document.body.style.overflow = "hidden"
 
 export default class App extends Component {
   render() {
