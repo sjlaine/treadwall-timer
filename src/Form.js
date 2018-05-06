@@ -18,7 +18,12 @@ export default class Form extends Component {
 
   handleRepeats(event, repeats) {
     event.preventDefault();
-    this.setState({repeats});
+    const interval = {color: this.state.color, duration: this.state.duration};
+
+    while (repeats > 0) {
+      this.setState({timer: [...this.state.timer, interval]});
+      repeats--;
+    }
   }
 
   handleSubmit(event, duration) {
@@ -56,7 +61,7 @@ export default class Form extends Component {
         </div>
         <div className="form-right">
           <NewTimer
-            repeats={this.state.repeats}
+            timer={this.state.timer}
           />
         </div>
       </div>

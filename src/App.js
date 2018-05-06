@@ -23,7 +23,6 @@ export default class App extends Component {
               <Route path="/custom" component={Custom}/>
             </Switch>
           </div>
-          <Footer />
         </div>
       </Router>
     );
