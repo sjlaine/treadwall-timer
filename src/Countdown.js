@@ -95,8 +95,8 @@ export default class Countdown extends Component {
         counter++;
         setTimeout(() =>
         this.setState({
-          value: this.state.timeArr[counter].time || '00:00:00',
-          time: this.state.timeArr[counter].time || '00:00:00',
+          value: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
+          time: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
           counter
         }, () => this.handleStart()), 1000);
       }
@@ -104,10 +104,18 @@ export default class Countdown extends Component {
   }
 
   render() {
+    const counter = this.state.counter;
 
     return (
       <div className="timer">
         <h2>Countdown</h2>
+        <h3>
+        {
+          this.state.timeArr &&
+          this.state.timeArr[counter] &&
+          this.state.timeArr[counter].color
+        }
+        </h3>
         <div className="time-row">
         {
           this.state.time ?
