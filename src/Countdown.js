@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Timer from 'easytimer.js';
 import Sound from 'react-sound';
-import beep from './beep-09.mp3'
+import beep from './beep-09.mp3';
 
 export default class Countdown extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {value: ''}
+    this.state = {
+      value: '',
+      counter: 0
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -26,7 +29,13 @@ export default class Countdown extends Component {
       this.setState({time: myTimer.getTimeValues().toString()});
     });
 
-    this.setState({timer: myTimer});
+    this.setState({timer: myTimer,
+      value: this.props.timeArr[0].time,
+      time: this.props.timeArr[0].time,
+      timeArr: this.props.timeArr
+    });
+
+    console.log(this.props.timeArr);
   }
 
   handleChange(event) {
@@ -77,7 +86,25 @@ export default class Countdown extends Component {
     this.setState({finished: true})
   }
 
+  componentDidUpdate() {
+    let counter = this.state.counter;
+    if (this.state.time === '00:00:00') {
+      if (counter > this.state.timeArr.length) {
+        return;
+      } else {
+        counter++;
+        setTimeout(() =>
+        this.setState({
+          value: this.state.timeArr[counter].time || '00:00:00',
+          time: this.state.timeArr[counter].time || '00:00:00',
+          counter
+        }, () => this.handleStart()), 1000);
+      }
+    }
+  }
+
   render() {
+
     return (
       <div className="timer">
         <h2>Countdown</h2>
