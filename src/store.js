@@ -1,33 +1,42 @@
-const ADD_DURATION = 'ADD_DURATION';
-const ADD_INTERVALS = 'ADD_INTERVALS';
-const ADD_TIMER = 'ADD_TIMER';
+import { createStore } from 'redux';
+
+const ADD_INTERVAL = 'ADD_INTERVAL';
+const ADD_REPEATS = 'ADD_REPEATS';
 
 const initialState = {
-  duration: '',
+  intervals: [],
   timer: []
 }
 
-export const addDuration = (duration) => {
+export const addDuration = (interval) => {
   return {
-    type: ADD_DURATION,
-    duration
+    type: ADD_INTERVAL,
+    interval
   }
 };
 
-export const addIntervals = (intervals) => {
+export const addRepeats = (repeats) => {
   return {
-    type: ADD_INTERVALS,
-    intervals
+    type: ADD_REPEATS,
+    repeats
   }
 };
 
-export const addTimer = (timer) => {
-  return {
-    type: ADD_TIMER,
-    timer
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_INTERVAL:
+      return Object.assign({}, state, {interval: [...state.intervals, action.interval]});
+
+    case ADD_REPEATS:
+      return Object.assign(
+        {},
+        state,
+        {timer: [...state.timer, action.repeats], intervals: []});
+
+    default:
+      return state;
   }
 }
 
-const reducer = (prevState = initialState, action) => {
-  return newState;
-}
+const store = createStore(reducer);
+export default store;
