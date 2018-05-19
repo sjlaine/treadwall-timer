@@ -1,11 +1,15 @@
 import React from 'react';
+import store from './store';
 
-const IntervalChunk = (props) => {
+const IntervalChunk = () => {
+  const intervals = store.getState().intervals;
+  console.log('intervals from chunk', intervals);
+
   return (
     <h2>
       {
-        props.timer[0] &&
-        props.timer.map((obj, idx) => {
+        intervals[0] &&
+        intervals.map((obj, idx) => {
           return (
             <div key={idx}>
               <h3>
