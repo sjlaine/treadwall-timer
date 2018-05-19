@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case ADD_INTERVAL:
-      return Object.assign({}, state, {interval: [...state.intervals, action.interval]});
+      return Object.assign({}, state, {intervals: [...state.intervals, action.interval]});
 
     case ADD_REPEATS:
       return Object.assign(

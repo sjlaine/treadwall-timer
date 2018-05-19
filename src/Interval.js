@@ -11,6 +11,7 @@ export default class Interval extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.parseTime = this.parseTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -18,16 +19,42 @@ export default class Interval extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  parseTime(duration) {
+    let time;
+    let timeArr = duration.split(':');
+    timeArr = timeArr.map(el => {
+      if (el.length === 1) el = '0' + el;
+      return el;
+    });
+
+    switch(timeArr.length) {
+      case 1:
+        time = '00:00:' + timeArr.join('');
+        break;
+
+      case 2:
+        time = '00:' + timeArr.join('');
+        break;
+
+      case 3:
+        time = timeArr.join(':');
+        break;
+
+      default:
+        time = '';
+    }
+
+    return time;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
 
     const color = document.getElementsByClassName('selectedColor').length ?
       document.getElementsByClassName('selectedColor')[0].innerText : 'interval';
+    const duration = this.parseTime(this.state.duration);
 
-    store.dispatch(addInterval({
-      duration: this.state.duration,
-      color
-    }));
+    store.dispatch(addInterval({ duration, color }));
 
     console.log('store state', store.getState());
   }
