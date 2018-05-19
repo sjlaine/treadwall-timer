@@ -4,6 +4,8 @@ import Interval from './Interval';
 import IntervalChunk from './IntervalChunk';
 import NewTimer from './NewTimer';
 
+import store, { addInterval, addRepeats } from './store';
+
 export default class Form extends Component {
   constructor() {
     super();

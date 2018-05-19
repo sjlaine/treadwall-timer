@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import store, { addInterval } from './store';
 
 export default class Interval extends Component {
   constructor(props) {
@@ -10,10 +11,17 @@ export default class Interval extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
+  }
+
+  handleSubmit(event) {
+    store.dispatch(addInterval({
+      duration: this.state.duration
+    }))
   }
 
   render() {
@@ -24,10 +32,7 @@ export default class Interval extends Component {
       <div>
         <div className="form-left">
           <form
-            onSubmit={(e) => {
-              this.setState({duration: ''});
-              return this.props.handleSubmit(e, duration)
-              }}
+            onSubmit={this.handleSubmit}
           >
             <label>
               Duration
