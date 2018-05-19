@@ -5,7 +5,7 @@ import './App.css';
 import Header from './Header';
 import Timer from './Timer';
 import Countdown from './Countdown';
-import Custom from './Form';
+import Form from './Form';
 import CustomCountdown from './CustomCountdown';
 
 // document.body.style.overflow = "hidden"
@@ -21,7 +21,7 @@ export default class App extends Component {
               <Route exact path="/" component={CustomCountdown} />
               <Route exact path="/timers" component={Countdown}/>
               <Route path="/stopwatch" component={Timer}/>
-              <Route path="/custom" component={Custom}/>
+              <Route path="/custom" component={Form}/>
             </Switch>
           </div>
         </div>

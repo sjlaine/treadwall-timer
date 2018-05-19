@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink as Link } from 'react-router-dom';
 
 const NewTimer = (props) => {
   const timer = props.newTimer;
@@ -14,6 +15,11 @@ const NewTimer = (props) => {
           </div>
         ))
       }
+      <Link to="/">
+        <button>
+          Go To Timer
+        </button>
+      </Link>
     </div>
   );
 }
