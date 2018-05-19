@@ -19,15 +19,17 @@ export default class Interval extends Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+
     const color = document.getElementsByClassName('selectedColor').length ?
-      document.getElementsByClassName('selectedColor').innerText : 'interval';
+      document.getElementsByClassName('selectedColor')[0].innerText : 'interval';
 
     store.dispatch(addInterval({
       duration: this.state.duration,
       color
     }));
 
-
+    console.log('store state', store.getState());
   }
 
   render() {
