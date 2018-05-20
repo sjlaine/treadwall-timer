@@ -8,8 +8,6 @@ import Countdown from './Countdown';
 import Form from './Form';
 import CustomCountdown from './CustomCountdown';
 
-// document.body.style.overflow = "hidden"
-
 export default class App extends Component {
   render() {
     return (

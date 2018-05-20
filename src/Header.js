@@ -9,6 +9,9 @@ const Header = () => {
         <img className="App-logo" src={logo} alt="GPLogo" />
         <h1 className="App-title">Treadwall Timer</h1>
         <div className="subtitles">
+          <Link to="/">
+            <h2 className="App-subtitle">MyTimer</h2>
+          </Link>
           <Link to="/stopwatch">
             <h2 className="App-subtitle">Stopwatch</h2>
           </Link>

@@ -29,11 +29,13 @@ export default class Countdown extends Component {
       this.setState({time: myTimer.getTimeValues().toString()});
     });
 
-    this.setState({timer: myTimer,
-      value: this.props.timeArr[0].time,
-      time: this.props.timeArr[0].time,
-      timeArr: this.props.timeArr
-    });
+    if (this.props.timeArr) {
+      this.setState({timer: myTimer,
+        value: this.props.timeArr[0].time,
+        time: this.props.timeArr[0].time,
+        timeArr: this.props.timeArr
+      });
+    }
 
     console.log(this.props.timeArr);
   }

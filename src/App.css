@@ -12,7 +12,7 @@
   color: #33BEFF;
   display: flex;
   font-size: 45px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -24,13 +24,11 @@
 }
 
 .App-title {
-  font-size: 1.5em;
-  position: fixed;
-  align-self: center;
+  font-size: 40px;
+  margin: 0 20px 0 250px;
 }
 
 .subtitles {
-  position: fixed;
   right: 0;
   display: flex;
   margin: 0 30px 0 50px;
