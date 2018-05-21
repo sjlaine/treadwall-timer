@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import store, { addInterval } from './store';
+import store, { addInterval, addRepeats } from './store';
+import { connect } from 'react-redux';
 
-export default class Interval extends Component {
+export class Interval extends Component {
   constructor(props) {
     super(props);
 
@@ -13,6 +14,7 @@ export default class Interval extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRepeats = this.handleRepeats.bind(this);
   }
 
   handleChange(event) {
@@ -56,11 +58,30 @@ export default class Interval extends Component {
 
     store.dispatch(addInterval({ duration, color }));
 
+    this.setState({duration: ''});
+
     console.log('store state', store.getState());
   }
 
+  handleRepeats(event) {
+    event.preventDefault();
+
+    const intervalChunk = this.props.intervals;
+    let num = this.state.repeats;
+    let repeats = [];
+
+    while (num > 0) {
+      repeats.push(...intervalChunk);
+      num--;
+    }
+
+    store.dispatch(addRepeats(repeats));
+
+    this.setState({repeats: ''});
+    document.getElementsByClassName('selectedColor')[0].classList.remove('selectedColor');
+  }
+
   render() {
-    const repeats = this.state.repeats;
 
     return (
       <div>
@@ -91,10 +112,7 @@ export default class Interval extends Component {
           </form>
           <br />
           <form
-            onSubmit={(e) => {
-              this.setState({repeats: ''})
-              return this.props.handleRepeats(e, repeats)
-            }}
+            onSubmit={this.handleRepeats}
           >
             <label> Repeats: </label>
             <br />
@@ -119,3 +137,13 @@ export default class Interval extends Component {
     );
   }
 }
+
+const mapStateToProps = function (state) {
+  return {
+    intervals: state.intervals
+  };
+};
+
+const IntervalContainer = connect(mapStateToProps)(Interval);
+
+export default IntervalContainer;

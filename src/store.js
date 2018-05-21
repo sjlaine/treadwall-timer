@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        {timer: [...state.timer, action.repeats], intervals: []}
+        {timer: [...state.timer, ...action.repeats], intervals: []}
       );
 
     default:
@@ -40,5 +40,5 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store;

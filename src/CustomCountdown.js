@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Timer from 'easytimer.js';
 import Sound from 'react-sound';
 import beep from './beep-09.mp3';
 
-import store from './store';
-
-export default class CustomCountdown extends Component {
+export class CustomCountdown extends Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +22,7 @@ export default class CustomCountdown extends Component {
   componentDidMount() {
 
     const myTimer = new Timer();
-    const intervals = store.getState().intervals;
+    const intervals = this.props.timer;
 
     myTimer.addEventListener('secondsUpdated', (evt) => {
       this.setState({time: myTimer.getTimeValues().toString()});
@@ -131,3 +130,13 @@ export default class CustomCountdown extends Component {
     );
   }
 }
+
+const mapStateToProps = function (state) {
+  return {
+    timer: state.timer
+  };
+};
+
+const CustomCountdownContainer = connect(mapStateToProps)(CustomCountdown);
+
+export default CustomCountdownContainer;

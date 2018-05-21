@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const NewTimer = (props) => {
-  const timer = props.newTimer;
-  console.log('newTimer', timer);
+  const timer = props.timer;
 
   return (
     <div>
@@ -11,7 +11,7 @@ const NewTimer = (props) => {
         timer.map((interval, idx) => (
           <div key={idx}>
             <h2>{interval.color}</h2>
-            <h2>{interval.time}</h2>
+            <h2>{interval.duration}</h2>
           </div>
         ))
       }
@@ -24,4 +24,12 @@ const NewTimer = (props) => {
   );
 }
 
-export default NewTimer;
+const mapStateToProps = function (state) {
+  return {
+    timer: state.timer
+  };
+};
+
+const NewTimerContainer = connect(mapStateToProps)(NewTimer);
+
+export default NewTimerContainer;

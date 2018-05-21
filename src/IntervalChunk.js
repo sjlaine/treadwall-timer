@@ -1,8 +1,8 @@
 import React from 'react';
-import store from './store';
+import { connect } from 'react-redux';
 
-const IntervalChunk = () => {
-  const intervals = store.getState().intervals;
+const IntervalChunk = (props) => {
+  const intervals = props.intervals;
   console.log('intervals from chunk', intervals);
 
   return (
@@ -15,7 +15,7 @@ const IntervalChunk = () => {
               <h3>
                 Interval: {obj.color}
                 <br />
-                Duration: {obj.time}
+                Duration: {obj.duration}
               </h3>
             </div>
           )
@@ -26,4 +26,12 @@ const IntervalChunk = () => {
   )
 }
 
-export default IntervalChunk;
+const mapStateToProps = function (state) {
+  return {
+    intervals: state.intervals
+  };
+};
+
+const IntervalChunkContainer = connect(mapStateToProps)(IntervalChunk);
+
+export default IntervalChunkContainer;
