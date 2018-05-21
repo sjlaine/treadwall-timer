@@ -1,21 +1,136 @@
 import React, { Component } from 'react';
-import Countdown from './Countdown';
+
+import Timer from 'easytimer.js';
+import Sound from 'react-sound';
+import beep from './beep-09.mp3';
+
+import store from './store';
 
 export default class CustomCountdown extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      timeArr: [
-        {time: '00:00:03', color: 'yellow'},
-        {time: '00:00:01', color: 'blue'},
-        {time: '00:00:04', color: 'red'}]
+      value: '',
+      counter: 0
+    }
+
+    this.handleStart = this.handleStart.bind(this);
+    this.handlePause = this.handlePause.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  componentDidMount() {
+
+    const myTimer = new Timer();
+    const intervals = store.getState().intervals;
+
+    myTimer.addEventListener('secondsUpdated', (evt) => {
+      this.setState({time: myTimer.getTimeValues().toString()});
+    });
+
+    console.log('intervals?', intervals);
+
+    if (intervals.length) {
+      this.setState({timer: myTimer,
+        value: intervals[0].duration,
+        time: intervals[0].duration,
+        timeArr: intervals
+      });
+    }
+
+    console.log(this.state);
+  }
+
+  handleStart() {
+    console.log(this.state.time)
+    const timeArr = this.state.time.split(':');
+    const startTime = {hours: +timeArr[0], minutes: +timeArr[1], seconds: +timeArr[2]}
+    console.log('startTime', startTime);
+    this.state.timer.start({countdown: true, startValues: startTime});
+  }
+
+  handlePause() {
+    this.state.timer.pause();
+  }
+
+  handleReset() {
+    this.state.timer.reset();
+    this.setState({counter: 0});
+    this.state.timer.stop();
+    this.setState({finished: true})
+  }
+
+  componentDidUpdate() {
+    let counter = this.state.counter;
+    if (this.state.time === '00:00:00') {
+      if (counter > this.state.timeArr.length) {
+        return;
+      } else {
+        counter++;
+        setTimeout(() =>
+        this.setState({
+          value: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
+          time: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
+          counter
+        }, () => this.handleStart()), 1000);
+      }
     }
   }
 
   render() {
+    const counter = this.state.counter;
+
     return (
-      <Countdown timeArr={this.state.timeArr} />
-    )
+      <div className="timer">
+        <h2>Countdown</h2>
+        <h3>
+        {
+          this.state.timeArr &&
+          this.state.timeArr[counter] &&
+          this.state.timeArr[counter].color
+        }
+        </h3>
+        <div className="time-row">
+        {
+          this.state.time &&
+          <h1> {this.state.time} </h1>
+        }
+        </div>
+        {
+          this.state.time &&
+          (<div className="timer-btns">
+           <button
+            className="start-btn"
+            onClick={this.handleStart}
+          >
+            Start
+          </button>
+          <button
+            className="pause-btn"
+            onClick={this.handlePause}
+          >
+            Pause
+          </button>
+          <button
+            className="reset-btn"
+            onClick={this.handleReset}
+          >
+            Reset
+          </button>
+          </div>)
+        }
+        {
+          (this.state.time === '00:00:00') &&
+          (<Sound
+            url={beep}
+            playStatus={Sound.status.PLAYING}
+            onLoading={this.handleSongLoading}
+            onPlaying={this.handleSongPlaying}
+            onFinishedPlaying={this.handleSongFinishedPlaying}
+          />)
+        }
+      </div>
+    );
   }
 }

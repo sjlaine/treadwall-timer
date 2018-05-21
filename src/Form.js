@@ -41,10 +41,12 @@ export default class Form extends Component {
     document.getElementsByClassName('selectedColor')[0].innerText : 'N/A';
 
     let timeArr = duration.split(':');
+    console.log({timeArr});
+
     timeArr = timeArr.map(el => {
       if (el.length === 1) el = '0' + el;
       return el;
-    })
+    });
 
     let time;
     if (timeArr.length === 1) time = '00:00:' + timeArr.join('');

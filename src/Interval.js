@@ -29,11 +29,11 @@ export default class Interval extends Component {
 
     switch(timeArr.length) {
       case 1:
-        time = '00:00:' + timeArr.join('');
+        time = '00:00:' + timeArr.join(':');
         break;
 
       case 2:
-        time = '00:' + timeArr.join('');
+        time = '00:' + timeArr.join(':');
         break;
 
       case 3:
