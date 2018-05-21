@@ -70,8 +70,10 @@ export default class CustomCountdown extends Component {
         counter++;
         setTimeout(() =>
         this.setState({
-          value: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
-          time: this.state.timeArr[counter] ? this.state.timeArr[counter].time : '00:00:00',
+          value: this.state.timeArr[counter] ?
+            this.state.timeArr[counter].duration : '00:00:00',
+          time: this.state.timeArr[counter] ?
+            this.state.timeArr[counter].duration : '00:00:00',
           counter
         }, () => this.handleStart()), 1000);
       }
