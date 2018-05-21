@@ -29,8 +29,6 @@ export default class CustomCountdown extends Component {
       this.setState({time: myTimer.getTimeValues().toString()});
     });
 
-    console.log('intervals?', intervals);
-
     if (intervals.length) {
       this.setState({timer: myTimer,
         value: intervals[0].duration,
@@ -38,15 +36,11 @@ export default class CustomCountdown extends Component {
         timeArr: intervals
       });
     }
-
-    console.log(this.state);
   }
 
   handleStart() {
-    console.log(this.state.time)
     const timeArr = this.state.time.split(':');
     const startTime = {hours: +timeArr[0], minutes: +timeArr[1], seconds: +timeArr[2]}
-    console.log('startTime', startTime);
     this.state.timer.start({countdown: true, startValues: startTime});
   }
 
@@ -84,7 +78,8 @@ export default class CustomCountdown extends Component {
     const counter = this.state.counter;
 
     return (
-      <div className="timer">
+      this.state.time ?
+      (<div className="timer">
         <h2>Countdown</h2>
         <h3>
         {
@@ -132,7 +127,7 @@ export default class CustomCountdown extends Component {
             onFinishedPlaying={this.handleSongFinishedPlaying}
           />)
         }
-      </div>
+      </div>) : <h1>Please make a custom timer. </h1>
     );
   }
 }
