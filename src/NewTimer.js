@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { saveTimer } from './firestore';
 
 const NewTimer = (props) => {
   const timer = props.timer;
@@ -16,8 +17,8 @@ const NewTimer = (props) => {
         ))
       }
       <Link to="/">
-        <button>
-          Go To Timer
+        <button onClick={() => saveTimer('testtimer', props.timer)}>
+          Save Timer
         </button>
       </Link>
     </div>
