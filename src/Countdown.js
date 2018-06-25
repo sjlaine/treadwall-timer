@@ -3,6 +3,8 @@ import Timer from 'easytimer.js';
 import Sound from 'react-sound';
 import beep from './beep-09.mp3';
 
+import Footer from './Footer';
+
 export default class Countdown extends Component {
   constructor(props) {
     super(props);
@@ -187,6 +189,7 @@ export default class Countdown extends Component {
             onFinishedPlaying={this.handleSongFinishedPlaying}
           /> : null
         }
+        <Footer />
       </div>
     );
   }

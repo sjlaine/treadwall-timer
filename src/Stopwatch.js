@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink as Link } from 'react-router-dom';
-
-import { Icon } from 'react-icons-kit'
-import { home2 } from 'react-icons-kit/icomoon';
 
 import Timer from 'easytimer.js';
+import Footer from './Footer';
 
 export default class TreadTimer extends Component {
   constructor() {
@@ -74,6 +71,7 @@ export default class TreadTimer extends Component {
             Reset
           </button>
         </div>
+        <Footer />
       </div>
     );
   }
