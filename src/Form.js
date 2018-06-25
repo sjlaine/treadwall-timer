@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink as Link } from 'react-router-dom';
+
 import RouteColor from './RouteColor';
 import Interval from './Interval';
 import IntervalChunk from './IntervalChunk';
 import NewTimer from './NewTimer';
+
+import { Icon } from 'react-icons-kit';
+import { home2 } from 'react-icons-kit/icomoon';
 
 export default class Form extends Component {
   constructor() {
