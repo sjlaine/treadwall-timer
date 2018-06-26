@@ -7,7 +7,6 @@ import Stopwatch from './Stopwatch';
 import Countdown from './Countdown';
 import Form from './Form';
 import Timers from './Timers';
-import Footer from './Footer';
 
 export default class App extends Component {
   render() {

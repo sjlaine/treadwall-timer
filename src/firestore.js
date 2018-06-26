@@ -20,11 +20,12 @@ firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
-const firestore = firebase.firestore();
 const settings = {
   timestampsInSnapshots: true
 };
-firestore.settings(settings);
+db.settings(settings);
+
+export default db;
 
 export const saveTimer = (title, timer) => {
   db.collection("Timers").doc().set({
