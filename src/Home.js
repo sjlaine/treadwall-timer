@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
 import logo from './GP81.png';
 
-const Header = () => {
+const Home = () => {
   return (
     <div>
       <header className="App-home">
@@ -26,4 +26,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default Home;
