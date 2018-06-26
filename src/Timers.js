@@ -24,7 +24,9 @@ export default class Timers extends Component {
       <div>
         {
           this.state.timers &&
-          this.state.timers.map((timer, idx) => <h1 key={idx}>{timer.title}</h1>)
+          this.state.timers.map((timer, idx) => (
+            <h1 key={idx}>{timer.title}</h1>
+          ))
         }
         <Footer />
       </div>

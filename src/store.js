@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const ADD_INTERVAL = 'ADD_INTERVAL';
 const ADD_REPEATS = 'ADD_REPEATS';
+const ADD_TIMER = 'ADD_TIMER';
 
 const initialState = {
   intervals: [],
@@ -22,6 +23,13 @@ export const addRepeats = (repeats) => {
   }
 };
 
+export const addTimer = (timer) => {
+  return {
+    type: ADD_TIMER,
+    timer
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -34,6 +42,12 @@ const reducer = (state = initialState, action) => {
         state,
         {timer: [...state.timer, ...action.repeats], intervals: []}
       );
+    case ADD_TIMER:
+      return Object.assign(
+        {},
+        state,
+        {timer: [...action.timer]}
+      )
 
     default:
       return state;
