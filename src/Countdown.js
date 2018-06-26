@@ -37,9 +37,9 @@ export default class Countdown extends Component {
         time: this.props.timeArr[0].time,
         timeArr: this.props.timeArr
       });
+    } else {
+      this.setState({timer: myTimer});
     }
-
-    console.log(this.props.timeArr);
   }
 
   handleChange(event) {
@@ -66,12 +66,11 @@ export default class Countdown extends Component {
       if (el.length === 1) el = '0' + el;
       return el;
     })
-    console.log(timeArr);
     let time;
     if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
-    this.setState({time})
+    this.setState({time}, () => console.log(this.state.time));
   }
 
   handleStart() {

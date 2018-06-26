@@ -4,6 +4,7 @@
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -20,13 +21,15 @@
 }
 
 .App-title {
-  font-size: 60px;
+  font-size: 55px;
+  padding-top: 10px;
+  color: #2263A3;
 }
 
 .App-link {
   font-size: 50px;
   padding: 30px;
-  color: #2d61b5;
+  color: #2263A3;
 }
 
 .App-intro {
@@ -34,6 +37,8 @@
 }
 
 .App-body {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -176,10 +181,7 @@ button:hover {
 }
 
 .footer {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
 }
