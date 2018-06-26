@@ -6,6 +6,7 @@ import Home from './Home';
 import Stopwatch from './Stopwatch';
 import Countdown from './Countdown';
 import Form from './Form';
+import Timers from './Timers';
 import Footer from './Footer';
 
 export default class App extends Component {
@@ -22,6 +23,7 @@ export default class App extends Component {
               />
               <Route path="/stopwatch" component={Stopwatch}/>
               <Route path="/form" component={Form}/>
+              <Route path="/timers" component={Timers}/>
             </Switch>
           </div>
         </div>

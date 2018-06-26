@@ -20,6 +20,9 @@ const Home = () => {
           <Link to="/form" style={{ textDecoration: 'none' }}>
             <h2 className="App-link">Custom</h2>
           </Link>
+          <Link to="/timers" style={{ textDecoration: 'none' }}>
+            <h2 className="App-link">Timers</h2>
+          </Link>
         </div>
       </header>
     </div>
