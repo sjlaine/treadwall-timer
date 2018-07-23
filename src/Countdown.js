@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Timer from 'easytimer.js';
 import Sound from 'react-sound';
 import beep from './beep-09.mp3';
 
 import Footer from './Footer';
 
-export default class Countdown extends Component {
+export class Countdown extends Component {
   constructor(props) {
     super(props);
 
@@ -13,6 +14,8 @@ export default class Countdown extends Component {
       value: '',
       counter: 0
     }
+
+    console.log(this.props);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -193,3 +196,13 @@ export default class Countdown extends Component {
     );
   }
 }
+
+const mapStateToProps = function(state) {
+  return {
+    timer: state.timer
+  };
+};
+
+const CountdownContainer = connect(mapStateToProps)(Countdown);
+
+export default CountdownContainer;

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink as Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import db from './firestore';
 import { addTimer } from './store';
 import Footer from './Footer';
 
-export default class Timers extends Component {
-  constructor() {
-    super();
+export class Timers extends Component {
+  constructor(props) {
+    super(props);
     this.state = {};
 
     this.selectTimer = this.selectTimer.bind(this);
@@ -13,7 +15,6 @@ export default class Timers extends Component {
 
   async componentDidMount() {
     let timers = [];
-    // console.log(timerTitles);
 
     await db.collection('Timers')
       .get()
@@ -22,8 +23,11 @@ export default class Timers extends Component {
     this.setState({timers});
   }
 
-  selectTimer(idx) {
-    addTimer(this.state.timers[idx]);
+  selectTimer(event, idx) {
+    event.preventDefault();
+    console.log('adding timer', this.state.timers[idx].timer)
+    this.props.addTimer(this.state.timers[idx].timer);
+    this.props.history.push('/customcountdown');
   }
 
   render() {
@@ -32,7 +36,12 @@ export default class Timers extends Component {
         {
           this.state.timers &&
           this.state.timers.map((timer, idx) => (
-            <h1 key={idx} onClick={() => this.selectTimer(idx)}>{timer.title}</h1>
+            <h1
+              key={idx}
+              onClick={(event) => this.selectTimer(event, idx)}
+            >
+              {timer.title}
+            </h1>
           ))
         }
         <Footer />
@@ -40,3 +49,21 @@ export default class Timers extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    timer: state.timer
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTimer(timer) {
+      dispatch(addTimer(timer));
+    }
+  }
+}
+
+const TimersContainer = connect(mapStateToProps, mapDispatchToProps)(Timers);
+
+export default TimersContainer;

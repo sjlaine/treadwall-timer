@@ -5,6 +5,7 @@ import './App.css';
 import Home from './Home';
 import Stopwatch from './Stopwatch';
 import Countdown from './Countdown';
+import CustomCountdown from './CustomCountdown';
 import Form from './Form';
 import Timers from './Timers';
 
@@ -19,6 +20,10 @@ export default class App extends Component {
               <Route
                 path="/countdown"
                 component={Countdown}
+              />
+              <Route
+                path="/customCountdown"
+                component={CustomCountdown}
               />
               <Route path="/stopwatch" component={Stopwatch}/>
               <Route path="/form" component={Form}/>
