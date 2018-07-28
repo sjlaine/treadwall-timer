@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink as Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import db from './firestore';
-import { addTimer } from './store';
+import { selectTimer } from './store';
 import Footer from './Footer';
 
 export class Timers extends Component {
@@ -32,7 +32,7 @@ export class Timers extends Component {
 
   render() {
     return (
-      <div>
+      <div className="timerList">
         {
           this.state.timers &&
           this.state.timers.map((timer, idx) => (
@@ -42,6 +42,7 @@ export class Timers extends Component {
               onClick={(event) => this.selectTimer(event, idx)}
             >
               {timer.title}
+
             </h1>
           ))
         }
@@ -60,7 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addTimer(timer) {
-      dispatch(addTimer(timer));
+      dispatch(selectTimer(timer));
     }
   }
 }

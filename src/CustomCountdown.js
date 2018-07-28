@@ -23,7 +23,7 @@ export class CustomCountdown extends Component {
   componentDidMount() {
 
     const myTimer = new Timer();
-    const intervals = this.props.timer;
+    const intervals = this.props.selected;
 
     myTimer.addEventListener('secondsUpdated', (evt) => {
       this.setState({time: myTimer.getTimeValues().toString()});
@@ -80,7 +80,11 @@ export class CustomCountdown extends Component {
     return (
       this.state.time ?
       (<div className="timer">
-        <h2>Countdown</h2>
+        <h2>
+        {
+          this.props.selected.title
+        }
+        </h2>
         <h3>
         {
           this.state.timeArr &&
@@ -139,7 +143,8 @@ export class CustomCountdown extends Component {
 
 const mapStateToProps = function (state) {
   return {
-    timer: state.timer
+    timer: state.timer,
+    selected: state.selected
   };
 };
 
