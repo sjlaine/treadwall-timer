@@ -38,6 +38,7 @@ export class Timers extends Component {
           this.state.timers.map((timer, idx) => (
             <h1
               key={idx}
+              className="App-link"
               onClick={(event) => this.selectTimer(event, idx)}
             >
               {timer.title}

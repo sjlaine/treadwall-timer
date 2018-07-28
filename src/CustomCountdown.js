@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Footer from './Footer';
 
 import Timer from 'easytimer.js';
 import Sound from 'react-sound';
@@ -126,7 +127,12 @@ export class CustomCountdown extends Component {
             onFinishedPlaying={this.handleSongFinishedPlaying}
           />)
         }
-      </div>) : <h1>Please make a custom timer. </h1>
+      <Footer />
+      </div>) :
+      (<div>
+        <h1>Please make a custom timer.</h1>
+        <Footer />
+      </div>)
     );
   }
 }
