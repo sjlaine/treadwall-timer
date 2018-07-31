@@ -131,6 +131,16 @@ button:hover {
 .form-left {
   grid-column-start: 1;
   grid-column-end: span 1;
+  font-size: 20px;
+}
+
+.form-left h3 {
+  font-weight: 400;
+}
+
+.form-left h1 {
+  font-size: 25px;
+  font-weight: 800;
 }
 
 .form-right {
@@ -157,6 +167,17 @@ input {
   height: 50px;
 }
 
+.clear-btn {
+  grid-column-start: 2;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.route-color {
+  margin-bottom: 50px;
+}
+
 .route-color h3 {
   margin: 10px 0 0 20px;
 }
@@ -175,6 +196,14 @@ input {
 
 .blue-btn {
   background-color: #006bff;
+}
+
+.black-btn {
+  background-color: #616063;
+}
+
+.purple-btn {
+  background-color: #8806c9;
 }
 
 .rest-btn {

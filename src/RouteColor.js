@@ -47,6 +47,24 @@ export default class RouteColor extends Component {
             Blue
           </button>
           <button
+            className="purple-btn"
+            onClick={this.handleClick}
+          >
+            Purple
+          </button>
+          <button
+            className="black-btn"
+            onClick={this.handleClick}
+          >
+            Black
+          </button>
+          <button
+            className="white-btn"
+            onClick={this.handleClick}
+          >
+            White
+          </button>
+          <button
             className="rest-btn"
             onClick={this.handleClick}
           >
