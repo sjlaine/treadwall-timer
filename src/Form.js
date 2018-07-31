@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import RouteColor from './RouteColor';
 import Interval from './Interval';
@@ -6,7 +7,9 @@ import IntervalChunk from './IntervalChunk';
 import NewTimer from './NewTimer';
 import Footer from './Footer';
 
-export default class Form extends Component {
+import { clearTimer } from './store';
+
+export class Form extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +19,7 @@ export default class Form extends Component {
     };
 
     this.handleRepeats = this.handleRepeats.bind(this);
+    this.clearTimer = this.clearTimer.bind(this);
   }
 
   handleRepeats(event, repeats) {
@@ -31,6 +35,10 @@ export default class Form extends Component {
     this.setState({newTimer});
 
     document.getElementsByClassName('selectedColor')[0].classList.remove('selectedColor');
+  }
+
+  clearTimer() {
+    this.props.clearTimer();
   }
 
   render() {
@@ -56,3 +64,15 @@ export default class Form extends Component {
     )
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearTimer() {
+      dispatch(clearTimer());
+    }
+  }
+}
+
+const FormContainer = connect(null, mapDispatchToProps)(Form);
+
+export default FormContainer;

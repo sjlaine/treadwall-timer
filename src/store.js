@@ -3,6 +3,7 @@ import { createStore } from 'redux';
 const ADD_INTERVAL = 'ADD_INTERVAL';
 const ADD_REPEATS = 'ADD_REPEATS';
 const SELECT_TIMER = 'SELECT_TIMER';
+const CLEAR_TIMER = 'CLEAR_TIMER';
 
 const initialState = {
   intervals: [],
@@ -30,6 +31,13 @@ export const selectTimer = (selected) => {
   }
 }
 
+export const clearTimer = () => {
+  return {
+    type: CLEAR_TIMER,
+    timer: []
+  }
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -47,6 +55,13 @@ const reducer = (state = initialState, action) => {
         {},
         state,
         {selected: [...action.selected]}
+      )
+
+    case CLEAR_TIMER:
+      return Object.assign(
+        {},
+        state,
+        {timer: []}
       )
 
     default:
