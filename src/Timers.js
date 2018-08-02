@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import db from './firestore';
 import { selectTimer } from './store';
+import { sumTimer } from './helperfunctions';
 import Footer from './Footer';
 
 export class Timers extends Component {
@@ -30,7 +31,6 @@ export class Timers extends Component {
   }
 
   render() {
-    this.state.timers && console.log(this.state.timers);
 
     return (
       this.state.timers && this.state.timers.length ?
@@ -38,14 +38,16 @@ export class Timers extends Component {
         {
           this.state.timers &&
           this.state.timers.map((timer, idx) => (
-            <h1
+            <h2
               key={idx}
               className="App-link"
               onClick={(event) => this.selectTimer(event, idx)}
             >
               {timer.title}
-
-            </h1>
+              {
+                '  (' + sumTimer(timer.timer) + ')'
+              }
+            </h2>
           ))
         }
         <Footer />

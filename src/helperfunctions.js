@@ -1,8 +1,14 @@
-const sum = (arr) => arr.reduce((a, b) => a + b);
+export const sum = (arr) => arr.reduce((a, b) => a + b);
 
-const sumTimer = (arr) => {
+export const sumTimer = (arr) => {
   // console.log(arr);
-  let durationArr = arr.map(a => a.duration.split(':').map(b => parseInt(b, 10)));
+  // let durationArr = arr.forEach(a => a.duration.split(':').map(b => parseInt(b, 10)));
+  // console.log(durationArr);
+  let durationArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    durationArr.push(arr[i].duration.split(':').map(b => parseInt(b, 10)));
+  }
 
   let hourSum = sum(durationArr.map(el => el[0]));
   let minuteSum = sum(durationArr.map(el => el[1]));
