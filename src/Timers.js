@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink as Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import db from './firestore';
 import { selectTimer } from './store';
@@ -31,8 +30,11 @@ export class Timers extends Component {
   }
 
   render() {
+    this.state.timers && console.log(this.state.timers);
+
     return (
-      <div className="timerList">
+      this.state.timers && this.state.timers.length ?
+      (<div className="timerList">
         {
           this.state.timers &&
           this.state.timers.map((timer, idx) => (
@@ -47,7 +49,11 @@ export class Timers extends Component {
           ))
         }
         <Footer />
-      </div>
+      </div>) :
+      (<div>
+        <h3 className="loading">Timers Loading...</h3>
+        <Footer />
+      </div>)
     )
   }
 }

@@ -11,7 +11,7 @@
 .App-header {
   display: flex;
   align-self: center;
-  margin: 80px;
+  margin: 70px 70px 30px 70px;
 }
 
 .App-logo {
@@ -23,7 +23,7 @@
 .App-title {
   font-size: 55px;
   padding-top: 10px;
-  color: #2263A3;
+  color: black;
 }
 
 .App-link {
@@ -85,6 +85,10 @@
 .timer-btns {
   display: flex;
   align-self: center;
+}
+
+.loading {
+  margin-top: 200px;
 }
 
 .timerList {
