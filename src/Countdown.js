@@ -15,8 +15,6 @@ export class Countdown extends Component {
       counter: 0
     }
 
-    console.log(this.props);
-
     this.handleChange = this.handleChange.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.parseTime = this.parseTime.bind(this);
@@ -73,7 +71,7 @@ export class Countdown extends Component {
     if (timeArr.length === 1) time = '00:00:' + timeArr.join('');
     if (timeArr.length === 2) time = '00:' + timeArr.join(':');
     if (timeArr.length === 3) time = timeArr.join(':');
-    this.setState({time}, () => console.log(this.state.time));
+    this.setState({time});
   }
 
   handleStart() {

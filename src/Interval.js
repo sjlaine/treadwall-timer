@@ -59,8 +59,6 @@ export class Interval extends Component {
     store.dispatch(addInterval({ duration, color }));
 
     this.setState({duration: ''});
-
-    console.log('store state', store.getState());
   }
 
   handleRepeats(event) {

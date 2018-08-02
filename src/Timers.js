@@ -25,8 +25,8 @@ export class Timers extends Component {
 
   selectTimer(event, idx) {
     event.preventDefault();
-    console.log('adding timer', this.state.timers[idx].timer)
-    this.props.addTimer(this.state.timers[idx].timer);
+    console.log('adding timer', this.state.timers[idx])
+    this.props.selectTimer(this.state.timers[idx]);
     this.props.history.push('/customcountdown');
   }
 
@@ -38,16 +38,18 @@ export class Timers extends Component {
         {
           this.state.timers &&
           this.state.timers.map((timer, idx) => (
-            <h2
-              key={idx}
-              className="App-link"
-              onClick={(event) => this.selectTimer(event, idx)}
-            >
-              {timer.title}
-              {
-                '  (' + sumTimer(timer.timer) + ')'
-              }
-            </h2>
+            <div key={idx}>
+              <h2
+                onClick={(event) => this.selectTimer(event, idx)}
+              >
+                {timer.title}
+              </h2>
+              <h3>
+                {
+                  '  (' + sumTimer(timer.timer) + ')'
+                }
+              </h3>
+            </div>
           ))
         }
         <Footer />
@@ -68,7 +70,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTimer(timer) {
+    selectTimer(timer) {
       dispatch(selectTimer(timer));
     }
   }

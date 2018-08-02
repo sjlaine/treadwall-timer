@@ -95,6 +95,15 @@
   margin: 20px 0 20px 0;
 }
 
+.timerList h2 {
+  font-size: 30px;
+  color: #2263A3;
+}
+
+.timerList h3 {
+  margin-bottom: 30px;
+}
+
 button {
   height: 60px;
   width: 100px;

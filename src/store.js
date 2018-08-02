@@ -54,7 +54,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign(
         {},
         state,
-        {selected: [...action.selected]}
+        {selected: [...action.selected.timer], title: action.selected.title}
       )
 
     case CLEAR_TIMER:

@@ -1,9 +1,6 @@
 export const sum = (arr) => arr.reduce((a, b) => a + b);
 
 export const sumTimer = (arr) => {
-  // console.log(arr);
-  // let durationArr = arr.forEach(a => a.duration.split(':').map(b => parseInt(b, 10)));
-  // console.log(durationArr);
   let durationArr = [];
 
   for (let i = 0; i < arr.length; i++) {

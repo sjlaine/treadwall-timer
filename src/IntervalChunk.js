@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 const IntervalChunk = (props) => {
   const intervals = props.intervals;
-  console.log('intervals from chunk', intervals);
 
   return (
     <h2>

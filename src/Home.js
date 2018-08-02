@@ -15,13 +15,13 @@ const Home = () => {
             <h2 className="App-link">Stopwatch</h2>
           </Link>
           <Link to="/countdown" style={{ textDecoration: 'none' }}>
-            <h2 className="App-link">Countdown</h2>
+            <h2 className="App-link">Simple Countdown</h2>
           </Link>
           <Link to="/form" style={{ textDecoration: 'none' }}>
-            <h2 className="App-link">Custom</h2>
+            <h2 className="App-link">Make a Custom Timer</h2>
           </Link>
           <Link to="/timers" style={{ textDecoration: 'none' }}>
-            <h2 className="App-link">Timers</h2>
+            <h2 className="App-link">Saved Timers</h2>
           </Link>
         </div>
       </header>
