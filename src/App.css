@@ -219,7 +219,7 @@ input {
 }
 
 .footer {
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
 }
