@@ -51,11 +51,11 @@ export class CustomCountdown extends Component {
     this.state.timer.pause();
   }
 
-  handleReset() {
-    this.state.timer.reset();
-    this.setState({counter: 0});
+  handleReset(event) {
+    event.preventDefault();
+
+    this.setState({counter: 0, time: this.state.timeArr[0].duration});
     this.state.timer.stop();
-    this.setState({finished: true})
   }
 
   componentDidUpdate() {
@@ -80,8 +80,6 @@ export class CustomCountdown extends Component {
   render() {
     const counter = this.state.counter;
 
-    console.log(this.state);
-
     return (
       this.state.time ?
       (<div className="timer">
@@ -90,14 +88,23 @@ export class CustomCountdown extends Component {
           this.state.title
         }
         </h1>
-        <h3>
-          Interval:
-        {
-          this.state.timeArr &&
-          this.state.timeArr[counter] &&
-          ` ` + this.state.timeArr[counter].color
-        }
-        </h3>
+        <div className="timer-subtitle">
+          <h3>
+            Route:
+          {
+            this.state.timeArr &&
+            this.state.timeArr[counter] &&
+            ` ` + this.state.timeArr[counter].color
+          }
+          </h3>
+          <h3>
+            Interval:
+          {
+            this.state.timeArr &&
+            `  ` + (this.state.counter + 1)
+          }
+          </h3>
+        </div>
         <div className="time-row">
         {
           this.state.time &&
