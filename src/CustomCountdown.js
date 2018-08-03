@@ -62,16 +62,14 @@ export class CustomCountdown extends Component {
     let counter = this.state.counter;
     const sound = new Howl({
       src: [beep],
-      onload: function() {
-        console.log('sound loaded!')
-      },
+      html5: false,
       onplay: function() {
         console.info('Sounds playing!')
       }
     });
 
     if (this.state.time === '00:00:00') {
-      sound.play('laser');
+      sound.play();
       Howler.volume(10);
 
       if (counter > this.state.timeArr.length) {
