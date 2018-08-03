@@ -83,13 +83,13 @@ export class CustomCountdown extends Component {
     return (
       this.state.time ?
       (<div className="timer">
-        <h1>
+        <h2>
         {
           this.state.title
         }
-        </h1>
+        </h2>
         <div className="timer-subtitle">
-          <h3>
+          <h3 className="timer-route">
             Route:
           {
             this.state.timeArr &&
@@ -97,11 +97,11 @@ export class CustomCountdown extends Component {
             ` ` + this.state.timeArr[counter].color
           }
           </h3>
-          <h3>
-            Interval:
+          <h3 className="timer-interval">
+            Interval
           {
             this.state.timeArr &&
-            `  ` + (this.state.counter + 1)
+            `  ${this.state.counter + 1} of ${this.state.timeArr.length}`
           }
           </h3>
         </div>
