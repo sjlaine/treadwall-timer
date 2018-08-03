@@ -85,7 +85,7 @@ export class CustomCountdown extends Component {
       (<div className="timer">
         <h2>
         {
-          this.state.title
+          this.state.title.toUpperCase()
         }
         </h2>
         <div className="timer-subtitle">
@@ -118,19 +118,19 @@ export class CustomCountdown extends Component {
             className="start-btn"
             onClick={this.handleStart}
           >
-            Start
+            START
           </button>
           <button
             className="pause-btn"
             onClick={this.handlePause}
           >
-            Pause
+            PAUSE
           </button>
           <button
             className="reset-btn"
             onClick={this.handleReset}
           >
-            Reset
+            RESET
           </button>
           </div>)
         }

@@ -143,7 +143,7 @@ export class Countdown extends Component {
               className="change-btn"
               onClick={this.handleInput}
             >
-              Change
+              CHANGE
             </button>
           ) :
           (
@@ -151,7 +151,7 @@ export class Countdown extends Component {
               className="submit-btn"
               onClick={this.handleSubmit}
             >
-              Submit
+              SUBMIT
             </button>
           )
         }
@@ -163,19 +163,19 @@ export class Countdown extends Component {
             className="start-btn"
             onClick={this.handleStart}
           >
-            Start
+            START
           </button>
           <button
             className="pause-btn"
             onClick={this.handlePause}
           >
-            Pause
+            PAUSE
           </button>
           <button
             className="reset-btn"
             onClick={this.handleReset}
           >
-            Reset
+            RESET
           </button>
           </div>) : null
         }
