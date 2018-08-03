@@ -56,19 +56,19 @@ export default class TreadTimer extends Component {
             className="start-btn"
             onClick={this.handleStart}
           >
-            Start
+            START
           </button>
           <button
-            className="pause-btn"
+            className="stop-btn"
             onClick={this.handlePause}
           >
-            Pause
+            STOP
           </button>
           <button
             className="reset-btn"
             onClick={this.handleReset}
           >
-            Reset
+            RESET
           </button>
         </div>
         <Footer />
