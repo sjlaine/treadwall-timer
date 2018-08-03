@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Footer from './Footer';
 
 import Timer from 'easytimer.js';
-import Sound from 'react-sound';
 import beep from './beep-09.mp3';
 import { Howl, Howler } from 'howler';
 

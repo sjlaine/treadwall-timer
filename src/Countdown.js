@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Timer from 'easytimer.js';
-import Sound from 'react-sound';
 import beep from './beep-09.mp3';
-
+import { Howl, Howler } from 'howler';
 import Footer from './Footer';
 
 export class Countdown extends Component {
@@ -92,8 +91,20 @@ export class Countdown extends Component {
 
   componentDidUpdate() {
     let counter = this.state.counter;
+
+    const sound = new Howl({
+      src: [beep],
+      html5: false,
+      onplay: function() {
+        console.info('Sounds playing!')
+      }
+    });
+
     if (this.state.time === '00:00:00') {
-      if (counter > this.state.timeArr.length) {
+      sound.play();
+      Howler.volume(10);
+
+      if (!this.state.timeArr || counter > this.state.timeArr.length) {
         return;
       } else {
         counter++;
@@ -178,16 +189,6 @@ export class Countdown extends Component {
             RESET
           </button>
           </div>) : null
-        }
-        {
-          this.state.time === '00:00:00' ?
-          <Sound
-            url={beep}
-            playStatus={Sound.status.PLAYING}
-            onLoading={this.handleSongLoading}
-            onPlaying={this.handleSongPlaying}
-            onFinishedPlaying={this.handleSongFinishedPlaying}
-          /> : null
         }
         <Footer />
       </div>
