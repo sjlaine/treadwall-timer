@@ -105,7 +105,7 @@ export class Interval extends Component {
               className="submit-btn"
               type="submit"
             >
-              Add
+              ADD
             </button>
           </form>
           <br />
@@ -127,7 +127,7 @@ export class Interval extends Component {
               className="submit-btn"
               type="submit"
             >
-              Add
+              ADD
             </button>
           </form>
         </div>

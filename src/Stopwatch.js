@@ -45,7 +45,7 @@ export default class TreadTimer extends Component {
 
     return (
       <div className="timer">
-        <h2>Stopwatch</h2>
+        <h2>STOPWATCH</h2>
         <h1>
           {
             this.state.time

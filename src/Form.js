@@ -58,7 +58,7 @@ export class Form extends Component {
         </div>
         <Footer />
         <button onClick={this.clearTimer} className="clear-btn">
-          Clear Timer
+          CLEAR TIMER
         </button>
       </div>
     )

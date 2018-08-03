@@ -112,7 +112,7 @@ export class Countdown extends Component {
 
     return (
       <div className="timer">
-        <h2>Countdown</h2>
+        <h2>COUNTDOWN</h2>
         <h3>
         {
           this.state.timeArr &&
@@ -166,10 +166,10 @@ export class Countdown extends Component {
             START
           </button>
           <button
-            className="pause-btn"
+            className="stop-btn"
             onClick={this.handlePause}
           >
-            PAUSE
+            STOP
           </button>
           <button
             className="reset-btn"

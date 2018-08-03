@@ -121,10 +121,10 @@ export class CustomCountdown extends Component {
             START
           </button>
           <button
-            className="pause-btn"
+            className="stop-btn"
             onClick={this.handlePause}
           >
-            PAUSE
+            STOP
           </button>
           <button
             className="reset-btn"
