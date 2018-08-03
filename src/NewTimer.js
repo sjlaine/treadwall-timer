@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink as Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveTimer } from './firestore';
+import { selectTimer } from './store';
 
 export class NewTimer extends Component {
   constructor(props) {
@@ -12,10 +13,23 @@ export class NewTimer extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSaveTimer = this.handleSaveTimer.bind(this);
   }
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
+  }
+
+  handleSaveTimer() {
+    saveTimer(this.state.title, this.props.timer);
+
+    let selected = {
+      timer: this.props.timer,
+      title: this.state.title
+    }
+    console.log('SELECTED', selected)
+
+    this.props.selectTimer(selected);
   }
 
   render() {
@@ -40,8 +54,8 @@ export class NewTimer extends Component {
         </input>
         <br />
         <Link to="/customcountdown">
-          <button onClick={() => saveTimer(this.state.title, this.props.timer)}>
-            Save Timer
+          <button onClick={this.handleSaveTimer}>
+            SAVE TIMER
           </button>
         </Link>
       </div>
@@ -55,6 +69,14 @@ const mapStateToProps = function (state) {
   };
 };
 
-const NewTimerContainer = connect(mapStateToProps)(NewTimer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectTimer(selected) {
+      dispatch(selectTimer(selected));
+    }
+  }
+}
+
+const NewTimerContainer = connect(mapStateToProps, mapDispatchToProps)(NewTimer);
 
 export default NewTimerContainer;
