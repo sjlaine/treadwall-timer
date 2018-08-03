@@ -5,6 +5,7 @@
   "dependencies": {
     "easytimer.js": "^2.2.1",
     "firebase": "^5.1.0",
+    "howler": "^2.0.14",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-icons-kit": "^1.1.5",
@@ -13,6 +14,7 @@
     "react-scripts": "1.1.4",
     "react-sound": "^1.1.0",
     "redux": "^4.0.0",
+    "soundmanager2": "^2.97.20170602",
     "timer.js": "^1.0.4"
   },
   "scripts": {

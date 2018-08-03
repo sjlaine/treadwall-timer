@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Timer from 'easytimer.js';
 import Sound from 'react-sound';
 import beep from './beep-09.mp3';
+import { Howl, Howler } from 'howler';
 
 export class CustomCountdown extends Component {
   constructor(props) {
@@ -23,7 +24,6 @@ export class CustomCountdown extends Component {
   componentDidMount() {
 
     const myTimer = new Timer();
-    console.log(this.props.selected);
     const intervals = this.props.selected;
     const title = this.props.title;
 
@@ -60,7 +60,20 @@ export class CustomCountdown extends Component {
 
   componentDidUpdate() {
     let counter = this.state.counter;
+    const sound = new Howl({
+      src: [beep],
+      onload: function() {
+        console.log('sound loaded!')
+      },
+      onplay: function() {
+        console.info('Sounds playing!')
+      }
+    });
+
     if (this.state.time === '00:00:00') {
+      sound.play();
+      Howler.volume(10);
+
       if (counter > this.state.timeArr.length) {
         return;
       } else {
@@ -133,16 +146,6 @@ export class CustomCountdown extends Component {
             RESET
           </button>
           </div>)
-        }
-        {
-          (this.state.time === '00:00:00') &&
-          (<Sound
-            url={beep}
-            playStatus={Sound.status.PLAYING}
-            onLoading={this.handleSongLoading}
-            onPlaying={this.handleSongPlaying}
-            onFinishedPlaying={this.handleSongFinishedPlaying}
-          />)
         }
       <Footer history={this.props.history}/>
       </div>) :
