@@ -73,7 +73,7 @@ export class Interval extends Component {
       num--;
     }
 
-    store.dispatch(addRepeats(repeats));
+    this.props.addRepeats(repeats);
 
     this.setState({repeats: ''});
     document.getElementsByClassName('selectedColor')[0].classList.remove('selectedColor');
@@ -136,12 +136,20 @@ export class Interval extends Component {
   }
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = (state) => {
   return {
     intervals: state.intervals
   };
 };
 
-const IntervalContainer = connect(mapStateToProps)(Interval);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addRepeats(repeats) {
+      dispatch(addRepeats(repeats))
+    }
+  }
+}
+
+const IntervalContainer = connect(mapStateToProps, mapDispatchToProps)(Interval);
 
 export default IntervalContainer;

@@ -68,7 +68,7 @@ export default class RouteColor extends Component {
             className="rest-btn"
             onClick={this.handleClick}
           >
-            Rest
+            REST
           </button>
         </div>
       </div>
