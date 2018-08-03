@@ -71,7 +71,7 @@ export class CustomCountdown extends Component {
     });
 
     if (this.state.time === '00:00:00') {
-      sound.play();
+      sound.play('laser');
       Howler.volume(10);
 
       if (counter > this.state.timeArr.length) {

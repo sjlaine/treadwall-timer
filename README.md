@@ -37,7 +37,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Deployment
 
-* Eventual notes about deployment
+* https://github.com/mars/create-react-app-buildpack#usage
 
 ## Built With
 
